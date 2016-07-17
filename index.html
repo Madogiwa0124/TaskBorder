@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="jn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>TaskBorder</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="default.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1 id="top">TaskBorder</h1>
+    <div class="container" id="inputForm">
+        <h2>Input Task</h2>
+        <form id="task-form">
+            <div class="form-group">
+                <label>タイトル</label>
+                <div class="input-group">
+                    <input type="text" id="title" class="form-control">
+                    <span class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" id="priorityTitleBtn" data-toggle="dropdown" aria-expanded="false">
+                                <span id="priorityTitle">分類</span>
+                    <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="javascript:void(0)" value="high" text="重要度(高)">重要度(高)</a></li>
+                        <li><a href="javascript:void(0)" value="normal" text="普通">普通</a></li>
+                        <li><a href="javascript:void(0)" value="low" text="重要度(低)">重要度(低)</a></li>
+                    </ul>
+                    <input type="hidden" id="priority" value="">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>内容</label>
+                <textarea rows="" cols="" class="form-control" id="text"></textarea>
+            </div>
+            <div class="form-group">
+                <label>期限</label>
+                <input type="date" id="limit" class="form-control">
+            </div>
+            <button type="button" class="btn btn-sm btn-primary" id="inputBtn">
+                <i class="glyphicon glyphicon-ok"></i>  登録
+            </button>
+        </form>
+    </div>
+    <hr>
+    <div class="container" id="taskList">
+        <h2>Task List</h2>
+        <div class="row">
+            <div class="col-sm-4 area" id="todo">
+                <h3 style="background-color:#5555FF">Todo</h3>
+            </div>
+            <div class="col-sm-4 area" id="doing">
+                <h3 style="background-color:#FFFF55">Doing</h3>
+            </div>
+            <div class="col-sm-4 area" id="done">
+                <h3 style="background-color:#FF5555">Done</h3>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <h2>About</h2>
+        <label>TaskBorderとは</label>
+        <p>TaskBorderは、タスクかんばんボードを元にしたタスク管理アプリです。
+            <br>ユーザ登録は不要かつ、データを保持しないため、セキュリティ等を気にせずご利用頂けます。
+            <br>※そのため、ページを更新及びブラウザを閉じてしまうとタスクが消えてしまうので、ご注意ください。。。
+        </p>
+        <br>
+        <label>使い方</label>
+        <p>タスクの登録：Input Taskからタスクの情報を入力し、登録ボタンをクリック</p>
+        <p>タスクの変更：Task Listから各タスクの◀▶ボタンで状態を変更</p>
+        <p>タスクの削除：Task Listから各タスクの削除ボタンをクリック</p>
+        <br>
+        <label>製作者</label>
+        <p>
+            Name：窓際少年<br> Contact
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-info" onclick="window.open('https://twitter.com/Madogiwa_Boy')">Twitter</button>
+                <button type="button" class="btn btn-danger" onclick="window.open('https://github.com/Madogiwa0124')">GitHub</button>
+                <button type="button" class="btn btn-success" onclick="window.open('http://madogiwa0124.hatenablog.com/')">Blog</button>
+            </div>
+        </p>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted" style="color:#ffffff;">Copyright © 2016 窓際少年 All Rights Reserved</p>
+        </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script src="task.js"></script>
+
+    <script>
+        $(function(){
+            // 前回設定したクラスを保存
+            var priorityClass = '';
+            $('.dropdown-menu a').click(function(){
+                //反映先の要素名を取得
+                var priorityTitle = $('#priorityTitle');
+                var priorityTitleBtn = $('#priorityTitleBtn');
+                var priority = $('#priority');
+
+                //選択された内容でボタンの表示を変える
+                $(priorityTitle).html($(this).attr('text'));
+                
+                // 前回入れたクラスが残っていると色が上手く切り替わらないため    
+                // 前回のクラスを削除してから追加
+                $(priorityTitleBtn).removeClass(priorityClass);
+                priorityClass = getPriorityAddClass($(this).attr('value'));
+                $(priorityTitleBtn).addClass(priorityClass);
+
+                //選択された内容でhidden項目の値を変える
+                $(priority).val($(this).attr('value'));
+            }); 
+
+            function getPriorityAddClass(priority){
+                // 分類ごとに追加するクラスを定義
+                var priorityClass = {high:'btn-danger',normal:'btn-success',low:'btn-info'};
+                // 対応するクラスを返却
+                switch(priority){
+                    case 'high':
+                        return priorityClass.high;
+                        break;
+                    case 'normal':
+                        return priorityClass.normal;
+                        break;
+                    case 'low':
+                        return priorityClass.low;
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
