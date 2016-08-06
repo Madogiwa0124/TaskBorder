@@ -3,7 +3,8 @@ var taskId = 0
 $(function () {
   // 期限の初期値は現在日付を設定
   $('#limit').val(getformatDate('yyyy-mm-dd'))
-
+  // タイトルにフォーカスを設定
+  $('#title').focus() 
   // 登録ボタン押下時タスクを登録
   $('#inputBtn').click(function () {
     var form = {}
@@ -23,6 +24,8 @@ $(function () {
     $('#text').val('')
     // 期限は現在日付へリセット
     $('#limit').val(getformatDate('yyyy-mm-dd'))
+    // タイトルへフォーカスを設定
+    $('#title').focus()    
   })
 })
   
