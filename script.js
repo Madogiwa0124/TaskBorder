@@ -4,11 +4,8 @@ $(function () {
   // 期限の初期値は現在日付を設定
   $('#limit').val(getformatDate('yyyy-mm-dd'))
 
-  // 登録ボタンの取得
-  var inputBtn = document.getElementById('inputBtn')
-
-  inputBtn.addEventListener('click', function () {
-    // 画面情報の取得
+  // 登録ボタン押下時タスクを登録
+  $('#inputBtn').click(function () {
     var form = {}
     form.title = escapeHtml($('#title').val())
     form.priority = $('#priority').attr('value')
@@ -18,9 +15,18 @@ $(function () {
     var task = new Task(form)
     task.createTask()
     tasks.push(task)
-    console.log(form);
+    console.log(form)
+  })
+  // リセットボタン押下時入直値をリセット
+  // TODO:重要度のリセット機能
+  $('#resetBtn').click(function () {
+    $('#title').val('')
+    $('#text').val('')
+    // 期限は現在日付へリセット
+    $('#limit').val(getformatDate('yyyy-mm-dd'))
   })
 })
+  
 
 // タスクの削除
 // $function()内に記載するとhtmlから呼び出せないため、外出し
@@ -52,6 +58,7 @@ function escapeHtml(str) {
     str = str.replace(/>/g, '&gt;');
     str = str.replace(/"/g, '&quot;');
     str = str.replace(/'/g, '&#39;');
+    str = str.replace(/[\n\r]/g,'<br />')
     return str;
 }
 

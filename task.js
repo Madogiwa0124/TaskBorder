@@ -34,7 +34,9 @@ class Task {
       + '<button class="btn btn-xs btn-success upBtn"   onClick="taskStatusChange(' + this.id + ',\'up\')">'
       + '<i class="glyphicon glyphicon-triangle-right"></i></button > '
       + '</span>'
-      + '<button class="btn btn-xs btn-danger deleteBtn" onClick="taskDelete(' + this.id + ')">削除</button>'
+      + '<button class="btn btn-xs btn-danger deleteBtn" onClick="taskDelete(' + this.id + ')">'
+      + '<i class="glyphicon glyphicon-remove"></i>削除'
+      + '</button>'
       + '</span>'
       + '</p>'
     console.log(insertElement.innerHTML)
