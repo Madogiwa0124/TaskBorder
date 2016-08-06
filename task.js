@@ -57,7 +57,7 @@ class Task {
       case 'low':
         return color.low
       default:
-        return color.normal
+        return color.default
     }
   }
 
