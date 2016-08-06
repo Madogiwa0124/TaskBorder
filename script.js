@@ -83,18 +83,19 @@ function getformatDate (format) {
       var yyyy = toTargetDigits(year, 4)
       var mm = toTargetDigits(month, 2)
       var dd = toTargetDigits(day, 2)
-      return yyyy+mm+dd
+      return yyyy + mm + dd
     case 'yyyy-mm-dd':
       var yyyy = toTargetDigits(year, 4)
       var mm = toTargetDigits(month, 2)
       var dd = toTargetDigits(day, 2)
-      return yyyy+'-'+mm+'-'+dd
+      return yyyy + '-' + mm + '-' + dd
     case 'yyyy/mm/dd':
       var yyyy = toTargetDigits(year, 4)
       var mm = toTargetDigits(month, 2)
       var dd = toTargetDigits(day, 2)
-      return yyyy+'/'+mm+'/'+dd
+      return yyyy + '/' + mm + '/' + dd
     default:
+      // 何もしない
       break
   }
 }

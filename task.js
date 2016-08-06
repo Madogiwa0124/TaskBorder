@@ -4,7 +4,8 @@ class Task {
   constructor (form) {
     this.id = taskId
     this.title = form.title
-    this.priority = form.priority
+    // 何も選択していなかったら重要度(中)で登録
+    this.priority = form.priority === '' ? 'normal' : form.priority
     this.text = form.text
     this.limit = form.limit
     // TODO：登録時に状態を選択出来るようにする。
@@ -56,7 +57,7 @@ class Task {
       case 'low':
         return color.low
       default:
-        return color.default
+        return color.normal
     }
   }
 
