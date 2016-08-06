@@ -15,7 +15,6 @@ $(function () {
     var task = new Task(form)
     task.createTask()
     tasks.push(task)
-    console.log(form)
   })
   // リセットボタン押下時入直値をリセット
   // TODO:重要度のリセット機能

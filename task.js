@@ -39,7 +39,6 @@ class Task {
       + '</button>'
       + '</span>'
       + '</p>'
-    console.log(insertElement.innerHTML)
     // 反映先に作成したタスクのHTMLオブジェクトを反映
     insertPlace.appendChild(insertElement)
   }
@@ -48,7 +47,6 @@ class Task {
   getTitleColor() {
     // 追加するクラスと重要度の関連を保持した連想配列
     var color = { high: 'bg-danger', normal: 'bg-success', low: 'bg-info', default: 'bg-default' }
-    console.log(this.status)
     // 引数と連想配列の引当を行い、結果をreturn
     switch (this.priority) {
       case 'high':
