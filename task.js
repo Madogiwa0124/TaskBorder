@@ -4,7 +4,8 @@ class Task {
   constructor (form) {
     this.id = taskId
     this.title = form.title
-    this.priority = form.priority
+    // 何も選択していなかったら重要度(中)で登録
+    this.priority = form.priority === '' ? 'normal' : form.priority
     this.text = form.text
     this.limit = form.limit
     // TODO：登録時に状態を選択出来るようにする。
@@ -34,10 +35,11 @@ class Task {
       + '<button class="btn btn-xs btn-success upBtn"   onClick="taskStatusChange(' + this.id + ',\'up\')">'
       + '<i class="glyphicon glyphicon-triangle-right"></i></button > '
       + '</span>'
-      + '<button class="btn btn-xs btn-danger deleteBtn" onClick="taskDelete(' + this.id + ')">削除</button>'
+      + '<button class="btn btn-xs btn-danger deleteBtn" onClick="taskDelete(' + this.id + ')">'
+      + '<i class="glyphicon glyphicon-remove"></i>削除'
+      + '</button>'
       + '</span>'
       + '</p>'
-    console.log(insertElement.innerHTML)
     // 反映先に作成したタスクのHTMLオブジェクトを反映
     insertPlace.appendChild(insertElement)
   }
@@ -46,7 +48,6 @@ class Task {
   getTitleColor() {
     // 追加するクラスと重要度の関連を保持した連想配列
     var color = { high: 'bg-danger', normal: 'bg-success', low: 'bg-info', default: 'bg-default' }
-    console.log(this.status)
     // 引数と連想配列の引当を行い、結果をreturn
     switch (this.priority) {
       case 'high':

@@ -23,12 +23,12 @@
                     <input type="text" id="title" class="form-control">
                     <span class="input-group-btn">
                             <button type="button" class="btn btn-default dropdown-toggle" id="priorityTitleBtn" data-toggle="dropdown" aria-expanded="false">
-                                <span id="priorityTitle">分類</span>
+                                <span id="priorityTitle">重要度</span>
                     <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="javascript:void(0)" value="high" text="重要度(高)">重要度(高)</a></li>
-                        <li><a href="javascript:void(0)" value="normal" text="普通">普通</a></li>
+                        <li><a href="javascript:void(0)" value="normal" text="重要度(中)">重要度(中)</a></li>
                         <li><a href="javascript:void(0)" value="low" text="重要度(低)">重要度(低)</a></li>
                     </ul>
                     <input type="hidden" id="priority" value="">
@@ -44,7 +44,10 @@
                 <input type="date" id="limit" class="form-control">
             </div>
             <button type="button" class="btn btn-sm btn-primary" id="inputBtn">
-                <i class="glyphicon glyphicon-ok"></i>  登録
+                <i class="glyphicon glyphicon-send"></i>  登録
+            </button>
+            <button type="button" class="btn btn-sm btn-primary" id="resetBtn">
+                <i class="glyphicon glyphicon-refresh"></i>  リセット
             </button>
         </form>
     </div>
