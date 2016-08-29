@@ -12,7 +12,7 @@ $(function () {
     var form = {}
     form.title = escapeHtml($('#title').val())
     form.priority = $('#priority').attr('value')
-    form.text = escapeHtml($('#text').val())
+    form.text = replaceCheckBox(escapeHtml($('#text').val()))
     form.limit = $('#limit').val()
     // 新規タスクの生成
     var task = new Task(form)
@@ -87,6 +87,12 @@ function escapeHtml(str) {
   str = str.replace(/'/g, '&#39;');
   str = str.replace(/[\n\r]/g, '<br />')
   return str;
+}
+
+// * をチェックボックスに置換
+function replaceCheckBox(str) {
+  var ret = str.replace(/\*/g, '<input type="checkbox">')
+  return ret  
 }
 
 // 日付の整形メソッド
