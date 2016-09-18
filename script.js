@@ -15,7 +15,6 @@ $('#inputBtn').click(function () {
   form.title = escapeHtml($('#title').val())
   form.priority = $('#priority').attr('value')
   form.text = replaceCheckBox(escapeHtml($('#text').val()))
-  console.log($('#limit').val())
   form.limit = $('#limit').val()
   // 新規タスクの生成
   var task = new Task(form)
