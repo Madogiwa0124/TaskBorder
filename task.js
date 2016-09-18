@@ -27,7 +27,7 @@ class Task {
       '<p class="task-title ' + this.getTitleColor() + '">' + this.title + '</p>'
       + '<p class="task-text">' + this.text + '</p>'
       + '<p class="task-info">'
-      + '期限：<input type="date" value="' + this.limit + '">'
+      + '期限<input type="datetime-local" value="' + this.limit + '">'
       + '<span class="task-btn">'
       + '<span class="btn-group">'
       + '<button class="btn btn-xs btn-success downBtn" onClick="taskStatusChange(' + this.id + ',\'down\')">'
