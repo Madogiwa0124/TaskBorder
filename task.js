@@ -36,7 +36,7 @@ class Task {
       + '<i class="glyphicon glyphicon-triangle-right"></i></button > '
       + '</span>'
       + '<button class="btn btn-xs btn-danger deleteBtn" onClick="taskDelete(' + this.id + ')">'
-      + '<i class="glyphicon glyphicon-remove"></i>削除'
+      + '削除'
       + '</button>'
       + '</span>'
       + '</p>'
