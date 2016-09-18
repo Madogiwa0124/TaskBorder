@@ -18,7 +18,7 @@ function getformatDate(format,mode) {
   // 新規モードで呼ばれた場合は、次の時間の0分を設定
   var hour = (mode === 'new')? date.getHours() + 1 : date.getHours()
   var min  = (mode === 'new')? '00' : date.getMinutes()
-
+  console.log(date)
   // 指定した桁数に0パディングする関数を格納
   var toTargetDigits = function (num, digits) {
     num += '' // 文字列型へ変更
@@ -41,6 +41,7 @@ function getformatDate(format,mode) {
     case 'yyyy-MM-dd': return yyyy + '-' + MM + '-' + dd
     case 'yyyy/MM/dd': return yyyy + '/' + MM + '/' + dd
     case 'yyyy-MM-ddThh:mm': return yyyy + '-' + MM + '-' + dd + 'T' + hh + ':' + mm
+    case 'yyyy/MM/dd hh:mm': return yyyy + '/' + MM + '/' + dd + ' ' + hh + ':' + mm
     default: break  // なにもしない。
   }
 }

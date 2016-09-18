@@ -71,7 +71,8 @@ function taskDelete(id) {
 function taskStatusChange(id, order) {
   // 変更対象のタスクの取得
   var statusChangeTask = tasks[id]
-
+  // 履歴取得用の変更前のタスクを取得
+  var beforStatus = statusChangeTask.status;
   // 状態変更前のタスクの削除
   // 状態変更後では、対象を見つけられずErrorとなるため先に削除
   statusChangeTask.deleteTask()
@@ -79,6 +80,8 @@ function taskStatusChange(id, order) {
   statusChangeTask.statusChangeTask(order)
   // 状態変更後のタスクの生成
   statusChangeTask.createTask()
+  // 履歴作成method呼び出し
+  addHistory(statusChangeTask.title,beforStatus,statusChangeTask.status)
 }
 
 // * をチェックボックスに置換
