@@ -16,38 +16,39 @@
     <h1 id="top">TaskBorder</h1>
     <div class="container" id="inputForm">
         <h2>Input Task</h2>
+        <div class="alert alert-danger hidden" id="alert"></div>
         <form id="task-form">
             <div class="form-group">
-                <label>タイトル</label>
+                <label>Title</label>
                 <div class="input-group">
-                    <input type="text" id="title" class="form-control">
+                    <input type="text" id="title" class="form-control required">
                     <span class="input-group-btn">
                             <button type="button" class="btn btn-default dropdown-toggle" id="priorityTitleBtn" data-toggle="dropdown" aria-expanded="false">
-                                <span id="priorityTitle">重要度</span>
+                                <span id="priorityTitle">Priority</span>
                     <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="javascript:void(0)" value="high" text="重要度(高)">重要度(高)</a></li>
-                        <li><a href="javascript:void(0)" value="normal" text="重要度(中)">重要度(中)</a></li>
-                        <li><a href="javascript:void(0)" value="low" text="重要度(低)">重要度(低)</a></li>
+                        <li><a href="javascript:void(0)" value="high" text="high">high</a></li>
+                        <li><a href="javascript:void(0)" value="normal" text="normal">normal</a></li>
+                        <li><a href="javascript:void(0)" value="low" text="low">low</a></li>
                     </ul>
                     <input type="hidden" id="priority" value="">
                     </span>
                 </div>
             </div>
             <div class="form-group">
-                <label>内容</label>
+                <label>Text</label>
                 <textarea rows="" cols="" class="form-control" id="text"></textarea>
             </div>
             <div class="form-group">
-                <label>期限</label>
-                <input type="date" id="limit" class="form-control">
+                <label>Limit</label>
+                <input type="datetime-local" id="limit" class="form-control required">
             </div>
             <button type="button" class="btn btn-sm btn-primary" id="inputBtn">
-                <i class="glyphicon glyphicon-send"></i>  登録
+                <i class="glyphicon glyphicon-send"></i>  OK
             </button>
             <button type="button" class="btn btn-sm btn-primary" id="resetBtn">
-                <i class="glyphicon glyphicon-refresh"></i>  リセット
+                <i class="glyphicon glyphicon-refresh"></i>  RESET
             </button>
         </form>
     </div>
@@ -67,18 +68,35 @@
         </div>
     </div>
     <hr>
+    <div class="container" id="taskHistory">
+        <h2>Task History</h2>
+        <table class="table table-striped table-hover table-responsive">
+            <thead id="taskHistory_head">
+                <tr class="info"><th>title</th><th>Before</th><th>After</th><th>time</th></tr>
+            </thead>
+            <tbody id="taskHistory_body">
+            </tbody>
+        </table>
+    </div>
+    <hr>
     <div class="container">
         <h2>About</h2>
         <label>TaskBorderとは</label>
         <p>TaskBorderは、タスクかんばんボードを元にしたタスク管理アプリです。
-            <br>ユーザ登録は不要かつ、データを保持しないため、セキュリティ等を気にせずご利用頂けます。
-            <br>※そのため、ページを更新及びブラウザを閉じてしまうとタスクが消えてしまうので、ご注意ください。。。
+            <br>[特徴]
+            <ul>
+                <li>ユーザ登録不要：メールアドレス等の登録は不要です。すぐにお使い頂けます。</li>
+                <li>データベース不使用：当ツールは、データの保存を行いません。クライアント側に閉じた処理となっているので、ご安心ください。</li>
+                <li>タスク消化履歴管理：タスクの消化状況を自動で記録します。時間管理に役に立ちます。</li>
+            </ul>
+            <br>※注意事項：ページを更新及びブラウザを閉じてしまうとタスクが消えてしまうので、ご注意ください。。。
         </p>
         <br>
         <label>使い方</label>
         <p>タスクの登録：Input Taskからタスクの情報を入力し、登録ボタンをクリック</p>
         <p>タスクの変更：Task Listから各タスクの◀▶ボタンで状態を変更</p>
         <p>タスクの削除：Task Listから各タスクの削除ボタンをクリック</p>
+        <p>チェックボックス機能：タスク登録時に「Text」に「*」を入力すると☑を追加</p>
         <br>
         <label>製作者</label>
         <p>
@@ -99,6 +117,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="util.js"></script>
+    <script src="history.js"></script>
     <script src="script.js"></script>
     <script src="task.js"></script>
 
@@ -144,5 +164,4 @@
         });
     </script>
 </body>
-
 </html>
