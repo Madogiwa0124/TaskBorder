@@ -37,11 +37,12 @@ function getformatDate(format,mode) {
 
   // format変換
   switch (format) {
-    case 'yyyyMMdd':   return yyyy + MM + dd
-    case 'yyyy-MM-dd': return yyyy + '-' + MM + '-' + dd
-    case 'yyyy/MM/dd': return yyyy + '/' + MM + '/' + dd
-    case 'yyyy-MM-ddThh:mm': return yyyy + '-' + MM + '-' + dd + 'T' + hh + ':' + mm
-    case 'yyyy/MM/dd hh:mm': return yyyy + '/' + MM + '/' + dd + ' ' + hh + ':' + mm
+    case 'yyyyMMdd':          return yyyy + MM + dd
+    case 'yyyy-MM-dd':        return yyyy + '-' + MM + '-' + dd
+    case 'yyyy/MM/dd':        return yyyy + '/' + MM + '/' + dd
+    case 'yyyyMMddhhmm':      return yyyy + MM + dd + hh + mm  
+    case 'yyyy-MM-ddThh:mm':  return yyyy + '-' + MM + '-' + dd + 'T' + hh + ':' + mm
+    case 'yyyy/MM/dd hh:mm':  return yyyy + '/' + MM + '/' + dd + ' ' + hh + ':' + mm
     default: break  // なにもしない。
   }
 }
