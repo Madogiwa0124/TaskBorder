@@ -70,13 +70,17 @@
     <hr>
     <div class="container" id="taskHistory">
         <h2>Task History</h2>
-        <table class="table table-striped table-hover table-responsive">
+        <table class="table table-striped table-hover table-responsive" id="taskHistory_table">
             <thead id="taskHistory_head">
                 <tr class="info"><th>title</th><th>Before</th><th>After</th><th>time</th></tr>
             </thead>
             <tbody id="taskHistory_body">
             </tbody>
         </table>
+            <button type="button" class="btn btn-sm btn-primary" id="downloadHisCsvBtn">
+                <i class="glyphicon glyphicon-floppy-disk"></i> 
+                 CSV download
+            </button>
     </div>
     <hr>
     <div class="container">
@@ -117,6 +121,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="plugin/table2csv.js"></script>
     <script src="util.js"></script>
     <script src="history.js"></script>
     <script src="script.js"></script>
@@ -124,6 +129,7 @@
 
     <script>
         $(function(){
+            // TODO：text,textareaの場合は、エンターキー押下時にsubmitさせない
             // 前回設定したクラスを保存
             var priorityClass = '';
             $('.dropdown-menu a').click(function(){

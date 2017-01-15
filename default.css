@@ -37,7 +37,7 @@ div p{
     background-color: #ffffff;
     border-color: lightgray;
 }
-.task input[type="date"]{
+.task input[type="datetime-local"]{
     border: 1px solid;
     border-color: lightgray;
     border-radius: 5px;
@@ -48,7 +48,7 @@ div p{
 }
 .task-btn{
     display: inline;
-    margin: 5px;
+    margin: 1px;
 }
 .footer {
     position: relative;
