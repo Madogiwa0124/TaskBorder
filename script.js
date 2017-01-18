@@ -1,5 +1,11 @@
 var tasks = []
 var taskId = 0
+
+// ページ遷移時にalertを表示
+$(window).on('beforeunload', function(e) {
+  return 'タスクが消えてしまいますが、ページから離れてもよろしいですか？';
+});
+
 $(function () {
   // 期限の初期値は現在日付を設定
   $('#limit').val(getformatDate('yyyy-MM-ddThh:mm','new'))
