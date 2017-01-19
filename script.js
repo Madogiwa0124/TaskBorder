@@ -13,6 +13,15 @@ $(function () {
   $('#title').focus()
 })
 
+// エンターキー押下時のsubmitを無効化
+$('input').on('keydown', function(e){
+  if ((e.wich && e.wich === 13) || (e.keyCode && e.keyCode === 13)) {
+    return false
+  } else {
+    return true
+  }
+})
+
 // 登録ボタン押下時タスクを登録
 $('#inputBtn').click(function () {
   // 必須入力チェック
