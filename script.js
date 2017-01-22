@@ -37,7 +37,7 @@ $('#inputBtn').click(function () {
   tasks.push(task)
 })
 
-// リセットボタン押下時入直値をリセット
+// リセットボタン押下時入力値をリセット
 // TODO:重要度のリセット機能
 $('#resetBtn').click(function () {
   $('#title').val('')
@@ -76,7 +76,7 @@ function requiredCheck() {
 // タスク編集用の小画面表示
 function openTaskEditWindow(id) {
   targetTask = tasks[id]
-  window.open('taskEditwindow.html?id=' + targetTask.id
+  window.open('taskEditWindow.html?id=' + targetTask.id
     + '&title=' + targetTask.title + '&text=' + targetTask.text + '&limit=' + targetTask.limit
     , 'TaskEditWindow'
     , 'width=600, height=500, menubar=no, toolbar=no, scrollbars=yes'
