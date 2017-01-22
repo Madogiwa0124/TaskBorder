@@ -71,7 +71,8 @@
                 form.limit = $('#limit').val()
                 
                 // 親画面へ値の受け渡し
-                window.opener.taskEdit($.extend(true,{},form))
+                // TODO:親画面への値の受け渡し処理を改善する。
+                window.opener.taskEdit(form.id+','+form.title+','+form.text+','+form.limit)
 
                 window.close();
             })

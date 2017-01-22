@@ -84,14 +84,13 @@ function openTaskEditWindow(id) {
 }
 
 // タスクの編集
-function taskEdit(form) {
-  console.log('--ENTER--')
-  console.log('form' + form.id)
-  var editTask = tasks[form.id]
-  console.log(editTask)
-  editTask.title = form.title
-  editTask.text = form.text
-  editTask.limit = form.limit
+// TODO:親画面への値の受け渡し処理を改善する。
+function taskEdit(pramStr) {
+  var params = paramStr.split(',')
+  var editTask = tasks[prams[0]]
+  editTask.title = params[1]
+  editTask.text = params[2]
+  editTask.limit = params[3]
   editTask.editTask()
 }
 
