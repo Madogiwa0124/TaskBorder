@@ -86,7 +86,9 @@ function openTaskEditWindow(id) {
 // タスクの編集
 function taskEdit(form) {
   console.log('--ENTER--')
+  console.log(form)
   var editTask = tasks[form.id]
+  console.log(editTask)
   editTask.title = form.title
   editTask.text = form.text
   editTask.limit = form.limit
