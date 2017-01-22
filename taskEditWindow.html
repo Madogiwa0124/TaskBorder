@@ -71,8 +71,7 @@
                 form.limit = $('#limit').val()
                 
                 // 親画面へ値の受け渡し
-                console.log(form)
-                window.opener.taskEdit(form)
+                window.opener.taskEdit($.extend(form))
 
                 window.close();
             })
