@@ -85,7 +85,7 @@ function openTaskEditWindow(id) {
 
 // タスクの編集
 // TODO:親画面への値の受け渡し処理を改善する。
-function taskEdit(pramStr) {
+function taskEdit(paramStr) {
   var params = paramStr.split(',')
   var editTask = tasks[prams[0]]
   editTask.title = params[1]
