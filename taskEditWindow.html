@@ -47,9 +47,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="util.js"></script>
     <script>
+        var targetTask = {}
         $(function(){
             // 編集前の値の取得
-            var targetTask = {}
             var urlParams = location.search.substring(1).split('&')
             for(var i = 0; i < urlParams.length; i++) {
                 console.log(urlParams[i])
@@ -72,7 +72,7 @@
                 
                 // 親画面へ値の受け渡し
                 // TODO:親画面への値の受け渡し処理を改善する。
-                window.opener.taskEdit(form.id+','+form.title+','+form.text+','+form.limit)
+                window.opener.taskEdit(targetTask.id+','+form.title+','+form.text+','+form.limit)
 
                 window.close();
             })
