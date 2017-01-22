@@ -72,6 +72,27 @@ function requiredCheck() {
     return true
   }
 }
+
+// タスク編集用の小画面表示
+function openTaskEditWindow(id) {
+  targetTask = tasks[id]
+  window.open('taskEditwindow.html?id=' + targetTask.id
+    + '&title=' + targetTask.title + '&text=' + targetTask.text + '&limit=' + targetTask.limit
+    , 'TaskEditWindow'
+    , 'width=600, height=500, menubar=no, toolbar=no, scrollbars=yes'
+  )
+}
+
+// タスクの編集
+function taskEdit(form) {
+  console.log('--ENTER--')
+  var editTask = tasks[form.id]
+  editTask.title = form.title
+  editTask.text = form.text
+  editTask.limit = form.limit
+  editTask.editTask()
+}
+
 // タスクの削除
 // $function()内に記載するとhtmlから呼び出せないため、外出し
 function taskDelete(id) {
@@ -96,10 +117,4 @@ function taskStatusChange(id, order) {
   statusChangeTask.createTask()
   // 履歴作成method呼び出し
   addHistory(statusChangeTask.title,beforStatus,statusChangeTask.status)
-}
-
-// * をチェックボックスに置換
-function replaceCheckBox(str) {
-  var ret = str.replace(/\*/g, '<input type="checkbox">')
-  return ret  
 }

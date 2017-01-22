@@ -27,7 +27,7 @@ class Task {
       '<p class="task-title ' + this.getTitleColor() + '">' + this.title + '</p>'
       + '<p class="task-text">' + this.text + '</p>'
       + '<p class="task-info">'
-      + '期限<input type="datetime-local" value="' + this.limit + '">'
+      + '<input type="datetime-local" value="' + this.limit + '">'
       + '<span class="task-btn">'
       + '<span class="btn-group">'
       + '<button class="btn btn-xs btn-success downBtn" onClick="taskStatusChange(' + this.id + ',\'down\')">'
@@ -35,6 +35,9 @@ class Task {
       + '<button class="btn btn-xs btn-success upBtn"   onClick="taskStatusChange(' + this.id + ',\'up\')">'
       + '<i class="glyphicon glyphicon-triangle-right"></i></button > '
       + '</span>'
+      + '<button class="btn btn-xs btn-warning deleteBtn" onClick="openTaskEditWindow(' + this.id + ')">'
+      + '編集'
+      + '</button>'
       + '<button class="btn btn-xs btn-danger deleteBtn" onClick="taskDelete(' + this.id + ')">'
       + '削除'
       + '</button>'
@@ -59,6 +62,13 @@ class Task {
       default:
         return color.default
     }
+  }
+
+  // タスク変更メソッド
+  editTask () {
+    // タスクの再作成
+    this.deleteTask()
+    this.createTask()
   }
 
   // タスク削除メソッド

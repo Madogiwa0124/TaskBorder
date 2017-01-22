@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="jn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>TaskBorder</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="default.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1 id="top">TaskBorder</h1>
+    <div class="container" id="inputForm">
+        <h2>Edit Task</h2>
+        <div class="alert alert-danger hidden" id="alert"></div>
+        <form id="task-form">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="title" class="form-control required">
+            </div>
+            <div class="form-group">
+                <label>Text</label>
+                <textarea rows="" cols="" class="form-control" id="text"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Limit</label>
+                <input type="datetime-local" id="limit" class="form-control required">
+            </div>
+            <button type="button" class="btn btn-sm btn-primary" id="editBtn">
+                <i class="glyphicon glyphicon-send"></i>  Edit
+            </button>
+        </form>
+    </div>
+    <hr>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted" style="color:#ffffff;">Copyright © 2016 窓際少年 All Rights Reserved</p>
+        </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="util.js"></script>
+    <script>
+        $(function(){
+            // 編集前の値の取得
+            var targetTask = {}
+            var urlParams = location.search.substring(1).split('&')
+            for(var i = 0; i < urlParams.length; i++) {
+                console.log(urlParams[i])
+                var param = urlParams[i].split('=')
+                targetTask[param[0]] = decodeURI(param[1])
+            }
+
+            // 修正前の値を反映
+            $('#title').val(targetTask.title)
+            $('#text').val(targetTask.text)
+            $('#limit').val(targetTask.limit)
+            
+            // 編集ボタン押下時の処理
+            $('#editBtn').click(function(){
+                // 画面入力値の取得
+                var form = {}
+                form.title = escapeHtml($('#title').val())
+                form.text = replaceCheckBox(escapeHtml($('#text').val()))
+                form.limit = $('#limit').val()
+                
+                // 親画面へ値の受け渡し
+                window.opener.taskEdit(form)
+
+                window.close();
+            })
+
+        })
+    </script>
+</body>
+</html>

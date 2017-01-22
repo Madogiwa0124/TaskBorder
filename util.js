@@ -46,3 +46,9 @@ function getformatDate(format,mode) {
     default: break  // なにもしない。
   }
 }
+
+// * をチェックボックスに置換
+function replaceCheckBox(str) {
+  var ret = str.replace(/\*/g, '<input type="checkbox">')
+  return ret  
+}
